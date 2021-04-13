@@ -28,4 +28,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### API module/router nav 적용하기
+### API module/router nav 적용하기 - edit config
