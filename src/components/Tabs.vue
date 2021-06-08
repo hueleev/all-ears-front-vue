@@ -27,17 +27,16 @@
 
       <transition name="fade" mode="out-in">
         <div class="tab-content">
-          <template v-if="isActivePanel(tabName[index])">
-            <div
-              :class="getTabContent(index + 1)"
-              v-for="(item, index) in tabName"
-              :key="item"
-            >
-              <slot :name="getTabContent(index + 1)">
-                This is the default text!
-              </slot>
-            </div>
-          </template>
+          <div
+            :class="getTabContent(index + 1)"
+            v-for="(item, index) in tabName"
+            :key="index"
+          >
+            <!--v-if="isActivePanel(item)"-->
+            <slot :name="getTabContent(index + 1)">
+              This is the default text!
+            </slot>
+          </div>
         </div>
       </transition>
     </md-card-content>

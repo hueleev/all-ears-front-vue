@@ -1,25 +1,19 @@
 import axios from 'axios';
-import store from '@/store/index';
 import { setInterceptors } from './common/interceptors';
 
 function createInstance() {
-  const instance = axios.create({
+  return axios.create({
     baseURL: process.env.VUE_APP_API_URL,
-    headers: {
-      Authorization: store.state.token,
-    },
+  });
+}
+
+// 액시오스 초기화 함수 with AUTH
+function createInstanceWithAuth(url) {
+  const instance = axios.create({
+    baseURL: `${process.env.VUE_APP_API_URL}${url}`,
   });
   return setInterceptors(instance);
 }
 
-const instance = createInstance();
-
-function registerUser(userData) {
-    return instance.post('signup', userData);
-  }
-  
-  function loginUser(userData) {
-    return instance.post('login', userData);
-  }
-  
-  export { registerUser, loginUser };
+export const instance = createInstance();
+export const posts = createInstanceWithAuth('board');
